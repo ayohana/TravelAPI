@@ -49,7 +49,7 @@ namespace TravelAPI.Controllers
             return _db.Reviews.FirstOrDefault(review => review.ReviewId == id);
         }
 
-        // PUT api/reviews/5
+        // PUT api/reviews/5/user_name
         [HttpPut("{id}/{user_name}")]
         public void Put(int id, [FromBody] Review review, string user_name)
         {
@@ -61,13 +61,16 @@ namespace TravelAPI.Controllers
             }
         }
 
-        // DELETE api/reviews/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // DELETE api/reviews/5/user_name
+        [HttpDelete("{id}/{user_name}")]
+        public void Delete(int id, string user_name)
         {
-            var reviewToDelete = _db.Reviews.FirstOrDefault(review => review.ReviewId == id);
-            _db.Reviews.Remove(reviewToDelete);
-            _db.SaveChanges();
+            var reviewToDelete = _db.Reviews.FirstOrDefault(review => review.ReviewId == id && review.user_name == user_name);
+            if (reviewToDelete != null)
+            {
+                _db.Reviews.Remove(reviewToDelete);
+                _db.SaveChanges();
+            }
         }
     }
 }

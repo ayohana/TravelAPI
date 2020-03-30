@@ -1,4 +1,5 @@
-﻿using System;
+﻿using TravelAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,36 +11,44 @@ namespace TravelAPI.Controllers
     [ApiController]
     public class ReviewsController : ControllerBase
     {
-        // GET api/values
+        private TravelAPIContext _db;
+        public ReviewsController(TravelAPIContext db)
+        {
+            _db = db;
+        }
+
+        // GET api/reviews
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Review>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _db.Reviews.ToList();
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
+        // POST api/reviews
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Review review)
         {
+            _db.Reviews.Add(review);
+            _db.SaveChanges();
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // // GET api/reviews/5
+        [HttpGet("{id}")]
+        public ActionResult<Review> Get(int id)
         {
+            return _db.Reviews.FirstOrDefault(review => review.ReviewId == id);
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        // // PUT api/reviews/5
+        // [HttpPut("{id}")]
+        // public void Put(int id, [FromBody] string value)
+        // {
+        // }
+
+        // // DELETE api/reviews/5
+        // [HttpDelete("{id}")]
+        // public void Delete(int id)
+        // {
+        // }
     }
 }

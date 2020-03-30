@@ -19,6 +19,9 @@
 ## Notes
 
 * In CLI, `dotnet new webapi` generated this application's scaffolding.
+* Setup the database by adding these packages:
+  * `dotnet add package Microsoft.EntityFrameworkCore -v 2.2.0` 
+  * `dotnet add package Pomelo.EntityFrameworkCore.MySql -v 2.2.0`
 
 ## Known Bugs
 

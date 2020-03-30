@@ -77,9 +77,16 @@ namespace TravelAPI.Controllers
         [HttpGet("random")]
         public ActionResult<Review> GetRandom()
         {
-            var randomReview = _db.Reviews
-                .OrderBy(entry => Guid.NewGuid())
-                .FirstOrDefault();
+            var completeList = _db.Reviews.ToList();
+            List<int> allIds = new List<int> ();
+            foreach (Review review in completeList)
+            {
+                allIds.Add(review.ReviewId);
+            }
+            Random random = new Random();
+            var randomId = allIds[random.Next(0, allIds.Count)];
+            Console.WriteLine(">>>>>>>>>>>>>>>RANDOM REVIEW="+randomId);
+            var randomReview = _db.Reviews.FirstOrDefault(review => review.ReviewId == randomId);
             return randomReview;
         }
     }

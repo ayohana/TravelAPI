@@ -50,20 +50,14 @@ namespace TravelAPI.Controllers
         }
 
         // PUT api/reviews/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Review review, [FromBody] string user_name)
+        [HttpPut("{id}/{user_name}")]
+        public void Put(int id, [FromBody] Review review, string user_name)
         {
-            // var searchReview = _db.Reviews
-            //     .Where(entry => entry.user_name == review.user_name)
-            //     .FirstOrDefault(entry => entry.ReviewId == id);
-            // Console.WriteLine(searchReview.Title);
-            Console.WriteLine("USERNAME =" + user_name);
-            review.ReviewId = id;
-            if (review.user_name == review.user_name)
+            if (review.user_name.ToLower() == user_name.ToLower())
             {
-                Console.WriteLine("WORKSSSSSSSSS");
-                // _db.Entry(review).State = EntityState.Modified;
-                // _db.SaveChanges();
+                review.ReviewId = id;
+                _db.Entry(review).State = EntityState.Modified;
+                _db.SaveChanges();
             }
         }
 

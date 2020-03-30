@@ -20,9 +20,18 @@ namespace TravelAPI.Controllers
 
         // GET api/reviews
         [HttpGet]
-        public ActionResult<IEnumerable<Review>> Get()
+        public ActionResult<IEnumerable<Review>> Get(string destination, int rating)
         {
-            return _db.Reviews.ToList();
+            var query = _db.Reviews.AsQueryable();
+            if (destination != null)
+            {
+                query = query.Where(entry => entry.Destination == destination);
+            }
+            if (rating >= 0)
+            {
+                query = query.Where(entry => entry.Rating == rating);
+            }
+            return query.ToList();
         }
 
         // POST api/reviews

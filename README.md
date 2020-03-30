@@ -22,6 +22,20 @@
 * Setup the database by adding these packages:
   * `dotnet add package Microsoft.EntityFrameworkCore -v 2.2.0` 
   * `dotnet add package Pomelo.EntityFrameworkCore.MySql -v 2.2.0`
+* To seed data into the database, add the following to `TravelAPIContext` class:
+  ```
+  protected override void OnModelCreating(ModelBuilder builder)
+  {
+    builder.Entity<Review>()
+        .HasData(
+            new Review { ReviewId = 1, Destination = "Hawaii", Title = "Coconuts Yes!", Description = "Always ask for them.", Rating = 3, user_name="Amy" },
+            new Review { ReviewId = 2, Destination = "Seattle", Title = "The Emerald City", Description = "Mhm", Rating = 3, user_name="Bob" },
+            new Review { ReviewId = 3, Destination = "Denver", Title = "Hiking Paradise", Description = "Bring your hiking shoes with you!", Rating = 3, user_name="Amy" },
+            new Review { ReviewId = 4, Destination = "New York", Title = "Walk, walk, walk", Description = "So little time, so much distance to travel", Rating = 5, user_name="Bob" },
+            new Review { ReviewId = 5, Destination = "Chicago", Title = "Good 'ol Chicago", Description = "Dunkin donuts all around!", Rating = 5, user_name="Amy" }
+        );
+  }
+  ```
 
 ## Known Bugs
 

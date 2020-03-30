@@ -72,5 +72,15 @@ namespace TravelAPI.Controllers
                 _db.SaveChanges();
             }
         }
+
+         // GET api/reviews/random
+        [HttpGet("random")]
+        public ActionResult<Review> GetRandom()
+        {
+            var randomReview = _db.Reviews
+                .OrderBy(entry => Guid.NewGuid())
+                .FirstOrDefault();
+            return randomReview;
+        }
     }
 }

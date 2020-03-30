@@ -15,11 +15,11 @@ namespace TravelAPI.Models
     {
       builder.Entity<Review>()
           .HasData(
-              new Review { ReviewId = 1, Destination = "Hawaii", Title = "Coconuts Yes!", Description = "Always ask for them.", Rating = 3 },
-              new Review { ReviewId = 2, Destination = "Seattle", Title = "The Emerald City", Description = "Mhm", Rating = 3 },
-              new Review { ReviewId = 3, Destination = "Denver", Title = "Hiking Paradise", Description = "Bring your hiking shoes with you!", Rating = 3 },
-              new Review { ReviewId = 4, Destination = "New York", Title = "Walk, walk, walk", Description = "So little time, so much distance to travel", Rating = 6 },
-              new Review { ReviewId = 5, Destination = "Chicago", Title = "Good 'ol Chicago", Description = "Dunkin donuts all around!", Rating = 5 }
+              new Review { ReviewId = 1, Destination = "Hawaii", Title = "Coconuts Yes!", Description = "Always ask for them.", Rating = 3, user_name="Amy" },
+              new Review { ReviewId = 2, Destination = "Seattle", Title = "The Emerald City", Description = "Mhm", Rating = 3, user_name="Bob" },
+              new Review { ReviewId = 3, Destination = "Denver", Title = "Hiking Paradise", Description = "Bring your hiking shoes with you!", Rating = 3, user_name="Amy" },
+              new Review { ReviewId = 4, Destination = "New York", Title = "Walk, walk, walk", Description = "So little time, so much distance to travel", Rating = 5, user_name="Bob" },
+              new Review { ReviewId = 5, Destination = "Chicago", Title = "Good 'ol Chicago", Description = "Dunkin donuts all around!", Rating = 5, user_name="Amy" }
           );
     }
   }

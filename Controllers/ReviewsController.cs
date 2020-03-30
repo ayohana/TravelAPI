@@ -8,7 +8,7 @@ namespace TravelAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ReviewsController : ControllerBase
     {
         // GET api/values
         [HttpGet]

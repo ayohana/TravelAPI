@@ -16,6 +16,10 @@
 * As a user, I want to PUT and DELETE reviews, but only if I wrote them. (Start by requiring a user_name param to match the user_name of the author on the message. You can always try authentication later.)
 * As a user, I want to look up random destinations just for fun.
 
+## Notes
+
+* In CLI, `dotnet new webapi` generated this application's scaffolding.
+
 ## Known Bugs
 
 No known bugs at this time.

@@ -69,11 +69,11 @@ services.AddApiVersioning(o => {
     * `AssumeDefaultVersionWhenUnspecified` flag is used to set the default version when the client has not specified any versions. Without this flag, UnsupportedApiVersion exception would occur in the case when the version is not specified by the client
     * `DefaultApiVersion` flag is used to set the default version count
 
-* Add attribute `[ApiVersion("1.0")]` for Version 1 to Controller
+* Add attribute `[ApiVersion("1.0")]` for Version 1 & Version 2 to Controller
 
-
-
-
+* Update URL based versioning by changing the route:
+  * `[Route(“api/{v:apiVersion}/reviews)]`
+  * This will call `/api/1.0/reviews`
 
 ## Known Bugs
 

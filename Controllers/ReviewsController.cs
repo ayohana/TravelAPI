@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace TravelAPI.Controllers
 {
     [ApiVersion("1.0")]
-    [Route("api/[controller]")]
+    [Route("api/{v:apiVersion}/reviews")]
     [ApiController]
     public class ReviewsV1Controller : ControllerBase
     {
@@ -93,7 +93,7 @@ namespace TravelAPI.Controllers
     }
 
     [ApiVersion("2.0")]
-    [Route("api/[controller]")]
+    [Route("api/{v:apiVersion}/reviews")]
     [ApiController]
     public class ReviewsV2Controller : ControllerBase
     {

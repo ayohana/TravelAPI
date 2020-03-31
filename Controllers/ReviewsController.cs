@@ -8,12 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TravelAPI.Controllers
 {
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [ApiController]
-    public class ReviewsController : ControllerBase
+    public class ReviewsV1Controller : ControllerBase
     {
         private TravelAPIContext _db;
-        public ReviewsController(TravelAPIContext db)
+        public ReviewsV1Controller(TravelAPIContext db)
         {
             _db = db;
         }
@@ -88,6 +89,25 @@ namespace TravelAPI.Controllers
             Console.WriteLine(">>>>>>>>>>>>>>>RANDOM REVIEW="+randomId);
             var randomReview = _db.Reviews.FirstOrDefault(review => review.ReviewId == randomId);
             return randomReview;
+        }
+    }
+
+    [ApiVersion("2.0")]
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ReviewsV2Controller : ControllerBase
+    {
+        private TravelAPIContext _db;
+        public ReviewsV2Controller(TravelAPIContext db)
+        {
+            _db = db;
+        }
+
+        // GET api/reviews
+        [HttpGet]
+        public ActionResult<IEnumerable<string>> Get()
+        {
+            return new string[] { "This is", "Version 2" };
         }
     }
 }

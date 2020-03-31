@@ -24,6 +24,7 @@
   * `dotnet add package Pomelo.EntityFrameworkCore.MySql -v 2.2.0`
 * To seed data into the database, add the following to `TravelAPIContext` class:
   ```
+  ...
   protected override void OnModelCreating(ModelBuilder builder)
   {
     builder.Entity<Review>()
@@ -35,6 +36,16 @@
             new Review { ReviewId = 5, Destination = "Chicago", Title = "Good 'ol Chicago", Description = "Dunkin donuts all around!", Rating = 5, user_name="Amy" }
         );
   }
+  ...
+  ```
+* Feature applied - API Versioning:
+  * Generally, an API starts with Version 1.0. That way, when we make breaking changes at some point in the future, we can push these changes to Version 2.0. We can then leave Version 1.0 available for enterprises that don't have time to update to Version 2.0 just yet, or might need to make updates to their own code to deal with the changes first. If we're making smaller changes to an API, we might not upgrade to 2.0 - instead, 1.1 would suffice.
+  * Tutorial: ![API Versioning in .NET Core](https://neelbhatt.com/2018/04/21/api-versioning-in-net-core/)
+  * Update TravelAPI.csproj:
+  ```
+  ...
+  <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.0" />
+  ...
   ```
 
 ## Known Bugs

@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Review Details";
+}
+
+<h1>About @Model.user_name's Review for @Model.Destination</h1>
+
+<ul>
+    <li>Destination: @Model.Destination</li>
+    <li>Title: @Model.Title | Review ID: @Model.ReviewId</li>
+    <li>Author: @Model.user_name</li>
+    <li>Description: @Model.Description</li>
+    <li>Rating: @Model.Rating</li>
+</ul>
+
+<a href="/Reviews/Index"><p>Back to all reviews</p></a>

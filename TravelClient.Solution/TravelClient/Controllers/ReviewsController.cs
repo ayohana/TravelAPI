@@ -16,5 +16,11 @@ namespace TravelClient.Controllers
             return View(allReviews);
         }
 
+        public IActionResult Details(int id)
+        {
+            var singleReview = Review.GetDetails(id);
+            return View(singleReview);
+        }
+
     }
 }

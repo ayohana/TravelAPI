@@ -1,6 +1,6 @@
 # Travel API
 
-#### C# ASP.NET Core Web API Exercise for [Epicodus](https://www.epicodus.com/), 03.30.2020
+#### C# ASP.NET Core Web API Exercise for [Epicodus](https://www.epicodus.com/), 4.2.2020
 
 #### By [**Adela Darmansyah**](https://ayohana.github.io/portfolio/)
 
@@ -41,7 +41,11 @@
   ...
   `````
 
-## Features - API Versioning
+## Features
+
+
+<details>
+  <summary>API Versioning</summary>
 
 * Generally, an API starts with Version 1.0. That way, when we make breaking changes at some point in the future, we can push these changes to Version 2.0. We can then leave Version 1.0 available for enterprises that don't have time to update to Version 2.0 just yet, or might need to make updates to their own code to deal with the changes first. If we're making smaller changes to an API, we might not upgrade to 2.0 - instead, 1.1 would suffice.
 
@@ -58,10 +62,12 @@
 `````
 ...
 services.AddApiVersioning(o => {
-    o.ReportApiVersions = true;
-    o.AssumeDefaultVersionWhenUnspecified = true;
-    o.DefaultApiVersion = new ApiVersion(1, 0);
-    });
+  o.ReportApiVersions = true;
+  o.AssumeDefaultVersionWhenUnspecified = true;
+  o.DefaultApiVersion = new ApiVersion(2, 0);
+  o.Conventions.Controller<ReviewsV1Controller>().HasApiVersion(new ApiVersion(1, 0)); 
+  o.Conventions.Controller<ReviewsV2Controller>().HasApiVersion(new ApiVersion(2, 0));
+});
 ...
 `````
   * Some points here:
@@ -74,6 +80,8 @@ services.AddApiVersioning(o => {
 * Update URL based versioning by changing the route:
   * `[Route(“api/{v:apiVersion}/reviews)]`
   * This will call `/api/1.0/reviews`
+
+</details>
 
 ## Known Bugs
 

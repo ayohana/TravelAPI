@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using TravelAPI.Controllers;
 
 namespace TravelAPI
 {
@@ -36,6 +37,8 @@ namespace TravelAPI
                 o.ReportApiVersions = true;
                 o.AssumeDefaultVersionWhenUnspecified = true;
                 o.DefaultApiVersion = new ApiVersion(1, 0);
+                o.Conventions.Controller<ReviewsV1Controller>().HasApiVersion(new ApiVersion(1, 0)); 
+                o.Conventions.Controller<ReviewsV2Controller>().HasApiVersion(new ApiVersion(2, 0));
                 });
         }
 

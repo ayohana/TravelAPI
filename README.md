@@ -18,6 +18,9 @@
 
 ## Notes
 
+<details>
+  <summary>Travel API Setup</summary>
+
 * In CLI, `dotnet new webapi` generated this application's scaffolding.
 
 * Setup the database by adding these packages:
@@ -41,8 +44,9 @@
   ...
   `````
 
-## Features
+</details>
 
+## Features
 
 <details>
   <summary>API Versioning</summary>

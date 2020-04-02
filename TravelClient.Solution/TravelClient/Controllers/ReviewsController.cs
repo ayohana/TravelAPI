@@ -22,5 +22,12 @@ namespace TravelClient.Controllers
             return View(singleReview);
         }
 
+        [HttpPost]
+        public IActionResult Index(Review review)
+        {
+            Review.AddReview(review);
+            return RedirectToAction("Index");
+        } 
+
     }
 }

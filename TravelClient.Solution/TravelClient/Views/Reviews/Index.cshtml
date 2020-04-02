@@ -2,6 +2,28 @@
     ViewData["Title"] = "All Reviews";
 }
 
+<h1>Add New Review</h1>
+
+<form action="/reviews" method="post">
+  <label for="destination">Destination of Travel:</label>
+  <input id="destination" name="destination" type="text">
+  <br>
+  <label for="title">Title of Review:</label>
+  <input id="title" name="title" type="text">
+  <br>
+  <label for="description">Write Your Review:</label>
+  <input id="description" name="description" type="text">
+  <br>
+  <label for="rating">Rating of Destination:</label>
+  <input id="rating" name="rating" type="number">
+  <br>
+  <label for="user_name">Enter your username:</label>
+  <input id="user_name" name="user_name" type="text">
+  <br>
+  <button type="submit">Add</button>
+</form>
+
+<br>
 
 <h1>All Reviews</h1>
 

@@ -20,7 +20,9 @@ namespace TravelClient.Models
       var apiCallTask = ApiHelper.GetAll();
       var result = apiCallTask.Result;
 
+      // Convert result of response into JArray
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
+      // Convert JArray into List<Review>, a .NET object
       List<Review> reviewList = JsonConvert.DeserializeObject<List<Review>>(jsonResponse.ToString());
       
       return reviewList;
@@ -31,10 +33,19 @@ namespace TravelClient.Models
       var apiCallTask = ApiHelper.GetSingleReview(id);
       var result = apiCallTask.Result;
 
+      // Convert result of response into JObject
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+      // Convert JObject to a Review object
       Review review = JsonConvert.DeserializeObject<Review>(jsonResponse.ToString());
 
       return review;
+    }
+
+    public static void AddReview(Review newReview)
+    {
+      // Convert input from string to JSON string type
+      string jsonReview = JsonConvert.SerializeObject(newReview);
+      var apiCallTask = ApiHelper.Post(jsonReview);
     }
   }
 }

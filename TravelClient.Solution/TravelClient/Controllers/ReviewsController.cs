@@ -16,18 +16,32 @@ namespace TravelClient.Controllers
             return View(allReviews);
         }
 
+        [HttpPost]
+        public IActionResult Index(Review review)
+        {
+            Review.AddReview(review);
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Details(int id)
         {
             var singleReview = Review.GetDetails(id);
             return View(singleReview);
         }
 
-        [HttpPost]
-        public IActionResult Index(Review review)
+        public IActionResult Edit(int id)
         {
-            Review.AddReview(review);
-            return RedirectToAction("Index");
-        } 
+            var review = Review.GetDetails(id);
+            return View(review);
+        }
+
+        [HttpPost]
+        public IActionResult Details(int id, Review review)
+        {
+            review.ReviewId = id;
+            Review.Update(review);
+            return RedirectToAction("Details", id);
+        }
 
     }
 }

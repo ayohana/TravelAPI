@@ -43,9 +43,16 @@ namespace TravelClient.Models
 
     public static void AddReview(Review newReview)
     {
-      // Convert input from string to JSON string type
+      // Convert input from Review object to JSON string type
       string jsonReview = JsonConvert.SerializeObject(newReview);
       var apiCallTask = ApiHelper.Post(jsonReview);
+    }
+
+    public static void Update(Review reviewToEdit)
+    {
+      // Convert input from Review object to JSON string type
+      string jsonReview = JsonConvert.SerializeObject(reviewToEdit);
+      var apiCallTask = ApiHelper.Put(reviewToEdit.ReviewId, reviewToEdit.user_name, jsonReview);
     }
   }
 }

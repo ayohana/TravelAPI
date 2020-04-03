@@ -43,5 +43,12 @@ namespace TravelClient.Controllers
             return RedirectToAction("Details", id);
         }
 
+        public IActionResult Delete(int id, string user_name)
+        {
+            var thisReview = Review.GetDetails(id);
+            Review.Remove(id, thisReview.user_name);
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -54,5 +54,10 @@ namespace TravelClient.Models
       string jsonReview = JsonConvert.SerializeObject(reviewToEdit);
       var apiCallTask = ApiHelper.Put(reviewToEdit.ReviewId, reviewToEdit.user_name, jsonReview);
     }
+
+    public static void Remove(int id, string user_name)
+    {
+      var apiCallTask = ApiHelper.Delete(id, user_name);
+    }
   }
 }

@@ -13,4 +13,5 @@
 </ul>
 
 <a href="/Reviews/Edit/@(Model.ReviewId)"><p>Edit this review</p></a>
+<a asp-controller="Reviews" asp-action="Delete" asp-route-id="@Model.ReviewId"><p>Remove this review</p></a>
 <a href="/Reviews/Index"><p>Back to all reviews</p></a>
